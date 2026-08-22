@@ -1,0 +1,12 @@
+{
+  "artboards": [
+    { "file": "Main.dc.html", "x": 0, "y": 0, "w": 412, "h": 915, "title": "A · Wooden Clock" },
+    { "file": "SandBowl.dc.html", "x": 512, "y": 0, "w": 412, "h": 915, "title": "B · Sand Bowl" }
+  ],
+  "annotations": [
+    { "id": "brief", "x": 0, "y": -215, "w": 500, "text": "Two concepts for the meditation timer, drawn in one shared system: dark espresso room, mango wood, warm sand, Cormorant Garamond numerals, Jost labels.\nEach artboard has two tweak chips above it: duration re-labels the dial, progress scrubs the session to any moment.\nA soft gong sounds at the start and at each quarter, and a longer, deeper one closes the sit. Tap the gong line under the title to hear the quarter gong; tap again for the closing gong (sound on). The bowl shows the three quarter levels as faint marks inside." },
+    { "id": "note-clock", "x": 0, "y": 950, "w": 412, "text": "A · Wooden clock (as built)\nThe hand makes one full turn for the whole sit. Strong marks divide it; in the app you choose halves, thirds, quarters, fifths or eighths. No numerals. Mango wood, black steel hand.\nNew: an optional short koan, carved into the lower face. Use the koan tweak above the artboard to test different lengths." },
+    { "id": "note-bowl", "x": 512, "y": 950, "w": 412, "text": "B · Sand bowl\nA thin stream of sand fills a turned mango-wood bowl. The sand level is the clock.\nStrength: ambient and wordless, very restful.\nTradeoff: imprecise, you cannot easily judge minutes. The numeric readout below could be made optional." }
+  ],
+  "launch": { "view": "canvas" }
+}

@@ -1,0 +1,218 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&amp;family=Jost:wght@300;400;500&amp;display=swap" rel="stylesheet">
+  <style>
+    body { margin: 0; background: #191007; }
+    a { color: #c9a36a; }
+    a:hover { color: #e0c08a; }
+    @keyframes breatheGlow { 0%, 100% { opacity: 0.55; } 50% { opacity: 1; } }
+  </style>
+</helmet>
+<div style="position: relative; width: 412px; height: 915px; overflow: hidden; display: flex; flex-direction: column; align-items: center; background: radial-gradient(circle at 50% 34%, #2f2214 0%, #241a0f 38%, #191007 78%); font-family: 'Jost', 'Segoe UI', system-ui, sans-serif; color: #ece0cb;">
+  <div style="position: absolute; top: 118px; left: -74px; width: 560px; height: 560px; border-radius: 50%; background: radial-gradient(circle, rgba(255,196,120,0.13) 0%, rgba(255,196,120,0) 62%); animation: breatheGlow 9s ease-in-out infinite; pointer-events: none;"></div>
+  <div style="position: relative; margin-top: 78px; font-size: 13px; font-weight: 400; letter-spacing: 5px; text-transform: uppercase; color: rgba(236,224,203,0.66);">{{durationLabel}}</div>
+  <div role="button" onClick="{{playGong}}" style="position: relative; margin-top: 6px; display: flex; align-items: center; gap: 8px; height: 44px; padding: 0 12px; cursor: pointer;">
+    <svg width="17" height="17" viewBox="0 0 17 17">
+      <path d="M2.5 3 L14.5 3" fill="none" stroke="rgba(230,212,172,0.8)" stroke-width="1.2" stroke-linecap="round"></path>
+      <path d="M4.2 3 L5.6 5.4 M12.8 3 L11.4 5.4" fill="none" stroke="rgba(230,212,172,0.8)" stroke-width="1" stroke-linecap="round"></path>
+      <circle cx="8.5" cy="9.6" r="5.4" fill="none" stroke="rgba(230,212,172,0.8)" stroke-width="1.2"></circle>
+      <circle cx="8.5" cy="9.6" r="1.8" fill="none" stroke="rgba(230,212,172,0.8)" stroke-width="1"></circle>
+    </svg>
+    <div style="font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: rgba(236,224,203,0.55);">gongs at start, quarters and end</div>
+  </div>
+  <div style="position: relative; flex: 1 1 0px; display: flex; align-items: center; justify-content: center;">
+    <svg width="340" height="340" viewBox="0 0 340 340" style="filter: drop-shadow(0 22px 44px rgba(0,0,0,0.6)); overflow: visible;">
+      <defs>
+        <radialGradient id="woodBase" cx="42%" cy="36%" r="75%">
+          <stop offset="0%" stop-color="#dcae6f"></stop>
+          <stop offset="45%" stop-color="#c99a58"></stop>
+          <stop offset="80%" stop-color="#b3874a"></stop>
+          <stop offset="100%" stop-color="#9b7038"></stop>
+        </radialGradient>
+        <radialGradient id="faceLight" cx="46%" cy="40%" r="60%">
+          <stop offset="0%" stop-color="rgba(255,233,188,0.32)"></stop>
+          <stop offset="70%" stop-color="rgba(255,233,188,0.10)"></stop>
+          <stop offset="100%" stop-color="rgba(255,233,188,0)"></stop>
+        </radialGradient>
+        <linearGradient id="steelG" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#38342e"></stop>
+          <stop offset="55%" stop-color="#171411"></stop>
+          <stop offset="100%" stop-color="#060504"></stop>
+        </linearGradient>
+        <clipPath id="discClip"><circle cx="170" cy="170" r="165"></circle></clipPath>
+        <filter id="mottle" x="-5%" y="-5%" width="110%" height="110%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.012 0.085" numOctaves="4" seed="9" result="n"></feTurbulence>
+          <feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0.55 0.55 0.55 0 -0.62" result="na"></feColorMatrix>
+          <feComposite in="SourceGraphic" in2="na" operator="in"></feComposite>
+        </filter>
+        <filter id="paleMottle" x="-5%" y="-5%" width="110%" height="110%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.015 0.06" numOctaves="4" seed="31" result="n"></feTurbulence>
+          <feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0.5 0.5 0.5 0 -0.68" result="na"></feColorMatrix>
+          <feComposite in="SourceGraphic" in2="na" operator="in"></feComposite>
+        </filter>
+        <filter id="handShadowBlur"><feGaussianBlur stdDeviation="1.4"></feGaussianBlur></filter>
+      </defs>
+      <circle cx="170" cy="170" r="165" fill="url(#woodBase)"></circle>
+      <g clip-path="url(#discClip)">
+        <path d="M-10 36 C60 32, 130 40, 200 35 S300 38, 350 34" fill="none" stroke="#6b4620" stroke-width="3" opacity="0.11"></path>
+        <path d="M-10 60 C40 56, 110 62, 180 57 S290 62, 350 58" fill="none" stroke="#6b4620" stroke-width="6" opacity="0.09"></path>
+        <path d="M-10 78 C70 74, 140 82, 210 77 S310 80, 350 76" fill="none" stroke="#6b4620" stroke-width="2" opacity="0.14"></path>
+        <path d="M-10 106 C50 101, 120 109, 190 104 S300 108, 350 103" fill="none" stroke="#6b4620" stroke-width="7" opacity="0.08"></path>
+        <path d="M-10 128 C80 124, 150 132, 220 127 S320 130, 350 126" fill="none" stroke="#6b4620" stroke-width="3" opacity="0.12"></path>
+        <path d="M-10 151 C60 147, 130 154, 200 149 S300 153, 350 148" fill="none" stroke="#6b4620" stroke-width="4" opacity="0.10"></path>
+        <path d="M-10 172 C40 169, 120 175, 190 171 S290 174, 350 170" fill="none" stroke="#6b4620" stroke-width="2.5" opacity="0.13"></path>
+        <path d="M-10 196 C70 191, 140 199, 210 194 S310 197, 350 193" fill="none" stroke="#6b4620" stroke-width="6" opacity="0.08"></path>
+        <path d="M-10 218 C50 214, 120 222, 190 217 S300 220, 350 216" fill="none" stroke="#6b4620" stroke-width="3" opacity="0.12"></path>
+        <path d="M-10 243 C80 238, 150 246, 220 241 S320 245, 350 240" fill="none" stroke="#6b4620" stroke-width="5" opacity="0.09"></path>
+        <path d="M-10 266 C60 262, 130 270, 200 265 S300 268, 350 264" fill="none" stroke="#6b4620" stroke-width="3" opacity="0.11"></path>
+        <path d="M-10 293 C40 289, 110 296, 180 291 S290 295, 350 290" fill="none" stroke="#6b4620" stroke-width="4" opacity="0.10"></path>
+        <path d="M-10 312 C70 309, 140 315, 210 311 S310 314, 350 310" fill="none" stroke="#6b4620" stroke-width="2.5" opacity="0.12"></path>
+        <path d="M-10 91 C60 88, 140 93, 210 89 S310 92, 350 88" fill="none" stroke="#46290f" stroke-width="1.2" opacity="0.30"></path>
+        <path d="M-10 163 C50 160, 130 166, 200 162 S300 165, 350 161" fill="none" stroke="#46290f" stroke-width="1" opacity="0.26"></path>
+        <path d="M-10 253 C70 250, 150 255, 220 251 S320 254, 350 250" fill="none" stroke="#46290f" stroke-width="1.3" opacity="0.30"></path>
+        <path d="M-10 48 C60 44, 130 51, 200 46 S300 50, 350 45" fill="none" stroke="#f3d9a4" stroke-width="7" opacity="0.10"></path>
+        <path d="M-10 140 C50 136, 120 143, 190 138 S300 142, 350 137" fill="none" stroke="#f3d9a4" stroke-width="9" opacity="0.08"></path>
+        <path d="M-10 231 C80 227, 150 234, 220 229 S320 232, 350 228" fill="none" stroke="#f3d9a4" stroke-width="8" opacity="0.09"></path>
+        <path d="M-10 302 C60 298, 130 305, 200 300 S300 304, 350 299" fill="none" stroke="#f3d9a4" stroke-width="6" opacity="0.10"></path>
+        <circle cx="170" cy="170" r="165" fill="#5f3d1b" filter="url(#mottle)" opacity="0.28"></circle>
+        <circle cx="170" cy="170" r="165" fill="#f3d9a4" filter="url(#paleMottle)" opacity="0.16"></circle>
+      </g>
+      <circle cx="170" cy="170" r="152.5" fill="none" stroke="rgba(94,58,26,0.38)" stroke-width="26"></circle>
+      <circle cx="170" cy="170" r="138.6" fill="none" stroke="rgba(58,35,14,0.7)" stroke-width="1.6"></circle>
+      <circle cx="170" cy="170" r="140.4" fill="none" stroke="rgba(255,225,170,0.25)" stroke-width="1"></circle>
+      <circle cx="170" cy="170" r="136" fill="url(#faceLight)"></circle>
+      <circle cx="170" cy="170" r="133" fill="none" stroke="rgba(70,44,18,0.20)" stroke-width="8"></circle>
+      <circle cx="170" cy="170" r="128" fill="none" stroke="rgba(70,44,18,0.10)" stroke-width="6"></circle>
+      <circle cx="170" cy="170" r="164.7" fill="none" stroke="rgba(40,24,10,0.55)" stroke-width="1.8"></circle>
+      <circle cx="170" cy="170" r="162.8" fill="none" stroke="rgba(255,228,175,0.28)" stroke-width="1.1"></circle>
+      <circle cx="170" cy="170" r="150" fill="none" stroke="rgba(255,242,210,0.10)" stroke-width="26" stroke-dasharray="260 683" stroke-linecap="round" transform="rotate(-140 170 170)"></circle>
+      <path d="{{ticksMinor}}" fill="none" stroke="rgba(56,33,12,0.55)" stroke-width="1" stroke-linecap="round"></path>
+      <path d="{{ticksMajor}}" fill="none" stroke="#241505" stroke-width="2.4" stroke-linecap="round" opacity="0.95"></path>
+      <text x="170" y="{{koanY1L}}" text-anchor="middle" font-family="'Cormorant Garamond', 'Palatino Linotype', Georgia, serif" font-size="14.5" font-style="italic" font-weight="600" fill="rgba(247,221,171,0.55)" letter-spacing="0.6">{{koanL1}}</text>
+      <text x="170" y="{{koanY1}}" text-anchor="middle" font-family="'Cormorant Garamond', 'Palatino Linotype', Georgia, serif" font-size="14.5" font-style="italic" font-weight="600" fill="rgba(70,41,15,0.88)" letter-spacing="0.6">{{koanL1}}</text>
+      <text x="170" y="{{koanY2L}}" text-anchor="middle" font-family="'Cormorant Garamond', 'Palatino Linotype', Georgia, serif" font-size="14.5" font-style="italic" font-weight="600" fill="rgba(247,221,171,0.55)" letter-spacing="0.6">{{koanL2}}</text>
+      <text x="170" y="{{koanY2}}" text-anchor="middle" font-family="'Cormorant Garamond', 'Palatino Linotype', Georgia, serif" font-size="14.5" font-style="italic" font-weight="600" fill="rgba(70,41,15,0.88)" letter-spacing="0.6">{{koanL2}}</text>
+      <text x="170" y="{{koanY3L}}" text-anchor="middle" font-family="'Cormorant Garamond', 'Palatino Linotype', Georgia, serif" font-size="14.5" font-style="italic" font-weight="600" fill="rgba(247,221,171,0.55)" letter-spacing="0.6">{{koanL3}}</text>
+      <text x="170" y="{{koanY3}}" text-anchor="middle" font-family="'Cormorant Garamond', 'Palatino Linotype', Georgia, serif" font-size="14.5" font-style="italic" font-weight="600" fill="rgba(70,41,15,0.88)" letter-spacing="0.6">{{koanL3}}</text>
+      <g transform="translate(2.4 4.2)" opacity="0.32">
+        <g transform="{{needleRot}}" filter="url(#handShadowBlur)">
+          <path d="M170 50 L172.8 168 L170 192 L167.2 168 Z" fill="#1a0f05"></path>
+          <circle cx="170" cy="197" r="4.2" fill="#1a0f05"></circle>
+        </g>
+      </g>
+      <g transform="{{needleRot}}">
+        <path d="M170 50 L172.8 168 L170 192 L167.2 168 Z" fill="url(#steelG)" stroke="rgba(255,255,255,0.08)" stroke-width="0.4"></path>
+        <circle cx="170" cy="197" r="4.2" fill="url(#steelG)" stroke="rgba(255,255,255,0.08)" stroke-width="0.4"></circle>
+      </g>
+      <circle cx="170" cy="170" r="6.6" fill="#15100a" stroke="rgba(255,224,170,0.2)" stroke-width="0.8"></circle>
+      <circle cx="168.8" cy="168.6" r="1" fill="rgba(255,255,255,0.28)"></circle>
+    </svg>
+  </div>
+  <div style="position: relative; display: flex; flex-direction: column; align-items: center; gap: 12px;">
+    <div role="button" style="width: 66px; height: 66px; border-radius: 50%; border: 1px solid rgba(201,163,106,0.55); background: radial-gradient(circle at 50% 36%, rgba(201,163,106,0.16), rgba(201,163,106,0.04)); display: flex; align-items: center; justify-content: center; cursor: pointer;">
+      <svg width="18" height="22" viewBox="0 0 18 22"><rect x="2" y="1" width="4.6" height="20" rx="2.3" fill="#e6d4ac"></rect><rect x="11.4" y="1" width="4.6" height="20" rx="2.3" fill="#e6d4ac"></rect></svg>
+    </div>
+    <div role="button" style="height: 44px; display: flex; align-items: center; padding: 0 14px; font-size: 12px; letter-spacing: 3.5px; text-transform: uppercase; color: rgba(236,224,203,0.68); cursor: pointer;">end session</div>
+  </div>
+  <div style="height: 30px;"></div>
+</div>
+</x-dc>
+<script data-dc-script data-props='{"duration":{"editor":"int","default":10,"min":1,"max":60,"unit":"min","section":"Session"},"progress":{"editor":"range","default":0.4,"min":0,"max":1,"step":0.01,"section":"Session"},"koan":{"editor":"text","default":"The gong fades. Where does the sound go?","section":"Koan"},"$preview":{"width":412,"height":915}}'>
+class Component extends DCLogic {
+  gong(isEnd) {
+    try {
+      const AC = window.AudioContext || window.webkitAudioContext;
+      if (!AC) { return; }
+      if (!this._ctx) { this._ctx = new AC(); }
+      const ctx = this._ctx;
+      if (ctx.state === 'suspended') { ctx.resume(); }
+      const t0 = ctx.currentTime + 0.02;
+      const master = ctx.createGain();
+      master.gain.value = isEnd ? 0.45 : 0.4;
+      const lp = ctx.createBiquadFilter();
+      lp.type = 'lowpass';
+      lp.frequency.value = 2400;
+      master.connect(lp);
+      lp.connect(ctx.destination);
+      const parts = isEnd
+        ? [[98, 0.32, 14], [196, 0.5, 13], [393, 0.16, 9], [584, 0.08, 6], [823, 0.04, 4]]
+        : [[196, 0.5, 8], [393, 0.18, 6], [584, 0.09, 4.5], [823, 0.05, 3]];
+      const atk = isEnd ? 0.07 : 0.05;
+      for (const pr of parts) {
+        for (const dt of [1, 1.0021]) {
+          const o = ctx.createOscillator();
+          o.type = 'sine';
+          o.frequency.value = pr[0] * dt;
+          const g = ctx.createGain();
+          g.gain.setValueAtTime(0.0001, t0);
+          g.gain.linearRampToValueAtTime(pr[1] * 0.5, t0 + atk);
+          g.gain.exponentialRampToValueAtTime(0.0001, t0 + pr[2]);
+          o.connect(g);
+          g.connect(master);
+          o.start(t0);
+          o.stop(t0 + pr[2] + 0.1);
+        }
+      }
+    } catch (e) {}
+  }
+  renderVals() {
+    const D = this.props.duration ?? 10;
+    const p = Math.min(1, Math.max(0, this.props.progress ?? 0.4));
+    const wrap = (text, max) => {
+      const words = String(text).trim().split(/\s+/).filter(Boolean);
+      const lines = [];
+      let cur = '';
+      for (const w of words) {
+        const t = cur ? cur + ' ' + w : w;
+        if (t.length <= max) { cur = t; } else { if (cur) { lines.push(cur); } cur = w; }
+      }
+      if (cur) { lines.push(cur); }
+      return lines.slice(0, 3);
+    };
+    const kl = wrap(this.props.koan ?? '', 26);
+    const lh = 17;
+    const ky = 233 - (kl.length - 1) * lh / 2;
+    const tick = (r1, r2, i) => {
+      const a = i * 6 * Math.PI / 180;
+      const sx = Math.sin(a);
+      const cy = Math.cos(a);
+      return 'M' + (170 + r1 * sx).toFixed(2) + ' ' + (170 - r1 * cy).toFixed(2) +
+             ' L' + (170 + r2 * sx).toFixed(2) + ' ' + (170 - r2 * cy).toFixed(2) + ' ';
+    };
+    let minor = '';
+    let major = '';
+    for (let i = 0; i < 60; i++) {
+      if (i % 15 === 0) { major += tick(126, 112, i); } else { minor += tick(126, 118, i); }
+    }
+    return {
+      durationLabel: D + (D === 1 ? ' minute' : ' minutes'),
+      koanL1: kl[0] || '',
+      koanL2: kl[1] || '',
+      koanL3: kl[2] || '',
+      koanY1: ky,
+      koanY1L: ky + 0.8,
+      koanY2: ky + lh,
+      koanY2L: ky + lh + 0.8,
+      koanY3: ky + 2 * lh,
+      koanY3L: ky + 2 * lh + 0.8,
+      needleRot: 'rotate(' + (p * 360).toFixed(2) + ' 170 170)',
+      ticksMinor: minor,
+      ticksMajor: major,
+      playGong: () => {
+        const isEnd = !!(this.state && this.state.nextEnd);
+        this.gong(isEnd);
+        this.setState({ nextEnd: !isEnd });
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>
