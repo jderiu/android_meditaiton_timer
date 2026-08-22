@@ -36,4 +36,4 @@ Two features rely on Google software already on your device:
 
 ## Contact
 
-Questions about this policy: deri@zhaw.ch
+Questions about this policy: jan.deriu@gmail.com
